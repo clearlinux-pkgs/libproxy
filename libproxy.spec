@@ -4,7 +4,7 @@
 #
 Name     : libproxy
 Version  : 0.4.18
-Release  : 1
+Release  : 2
 URL      : https://github.com/libproxy/libproxy/releases/download/0.4.18/libproxy-0.4.18.tar.xz
 Source0  : https://github.com/libproxy/libproxy/releases/download/0.4.18/libproxy-0.4.18.tar.xz
 Summary  : Proxy Configuration Library
@@ -116,7 +116,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1664374486
+export SOURCE_DATE_EPOCH=1664374717
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -127,12 +127,12 @@ export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
 export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
-%cmake ..
+%cmake .. -DBIPR=ON
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1664374486
+export SOURCE_DATE_EPOCH=1664374717
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libproxy
 cp %{_builddir}/libproxy-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libproxy/01a6b4bf79aca9b556822601186afab86e8c4fbf || :
