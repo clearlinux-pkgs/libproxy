@@ -1,0 +1,6 @@
+0.4.18
+pkgconfig(NetworkManager)
+pkgconfig(dbus-1)
+pkgconfig(duktape)
+pkgconfig(libnm)
+pkgconfig(natus)
