@@ -4,7 +4,7 @@
 #
 Name     : libproxy
 Version  : 0.4.18
-Release  : 2
+Release  : 3
 URL      : https://github.com/libproxy/libproxy/releases/download/0.4.18/libproxy-0.4.18.tar.xz
 Source0  : https://github.com/libproxy/libproxy/releases/download/0.4.18/libproxy-0.4.18.tar.xz
 Summary  : Proxy Configuration Library
