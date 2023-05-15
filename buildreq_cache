@@ -1,6 +1,11 @@
-0.4.18
-pkgconfig(NetworkManager)
-pkgconfig(dbus-1)
+0.5.0
+curl-dev
+glib-dev
+gsettings-desktop-schemas
 pkgconfig(duktape)
-pkgconfig(libnm)
-pkgconfig(natus)
+pkgconfig(glib-2.0)
+pkgconfig(gobject-introspection-1.0)
+pkgconfig(gsettings-desktop-schemas)
+pkgconfig(libcurl)
+pkgconfig(libsoup-3.0)
+vala

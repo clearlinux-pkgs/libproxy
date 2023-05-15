@@ -1,5 +1,5 @@
 PKG_NAME := libproxy
-URL = https://github.com/libproxy/libproxy/releases/download/0.4.18/libproxy-0.4.18.tar.xz
+URL = https://github.com/libproxy/libproxy/archive/libproxy-0.5.0/libproxy-0.5.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
