@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : libproxy
-Version  : 0.5.0
-Release  : 4
-URL      : https://github.com/libproxy/libproxy/archive/libproxy-0.5.0/libproxy-0.5.0.tar.gz
-Source0  : https://github.com/libproxy/libproxy/archive/libproxy-0.5.0/libproxy-0.5.0.tar.gz
+Version  : 0.5.1
+Release  : 5
+URL      : https://github.com/libproxy/libproxy/archive/0.5.1/libproxy-0.5.1.tar.gz
+Source0  : https://github.com/libproxy/libproxy/archive/0.5.1/libproxy-0.5.1.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -19,14 +19,11 @@ Requires: libproxy-man = %{version}-%{release}
 BuildRequires : buildreq-meson
 BuildRequires : curl-dev
 BuildRequires : gi-docgen
-BuildRequires : glib-dev
 BuildRequires : gsettings-desktop-schemas
 BuildRequires : pkgconfig(duktape)
-BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gobject-introspection-1.0)
 BuildRequires : pkgconfig(gsettings-desktop-schemas)
 BuildRequires : pkgconfig(libcurl)
-BuildRequires : pkgconfig(libsoup-3.0)
 BuildRequires : vala
 # Suppress stripping binaries
 %define __strip /bin/true
@@ -104,10 +101,10 @@ man components for the libproxy package.
 
 
 %prep
-%setup -q -n libproxy-libproxy-0.5.0
-cd %{_builddir}/libproxy-libproxy-0.5.0
+%setup -q -n libproxy-0.5.1
+cd %{_builddir}/libproxy-0.5.1
 pushd ..
-cp -a libproxy-libproxy-0.5.0 buildavx2
+cp -a libproxy-0.5.1 buildavx2
 popd
 
 %build
@@ -115,7 +112,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684188988
+export SOURCE_DATE_EPOCH=1684958732
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -138,7 +135,7 @@ meson test -C builddir --print-errorlogs || :
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/libproxy
-cp %{_builddir}/libproxy-libproxy-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libproxy/01a6b4bf79aca9b556822601186afab86e8c4fbf || :
+cp %{_builddir}/libproxy-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libproxy/01a6b4bf79aca9b556822601186afab86e8c4fbf || :
 DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
@@ -161,10 +158,8 @@ DESTDIR=%{buildroot} ninja -C builddir install
 %files dev
 %defattr(-,root,root,-)
 /V3/usr/lib64/libproxy.so
-/V3/usr/lib64/libpxbackend-1.0.so
 /usr/include/libproxy/proxy.h
 /usr/lib64/libproxy.so
-/usr/lib64/libpxbackend-1.0.so
 /usr/lib64/pkgconfig/libproxy-1.0.pc
 
 %files doc
@@ -231,7 +226,9 @@ DESTDIR=%{buildroot} ninja -C builddir install
 %files lib
 %defattr(-,root,root,-)
 /V3/usr/lib64/libproxy.so.1
+/V3/usr/lib64/libproxy/libpxbackend-1.0.so
 /usr/lib64/libproxy.so.1
+/usr/lib64/libproxy/libpxbackend-1.0.so
 
 %files license
 %defattr(0644,root,root,0755)
