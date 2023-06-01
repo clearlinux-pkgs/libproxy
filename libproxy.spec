@@ -5,7 +5,7 @@
 #
 Name     : libproxy
 Version  : 0.5.1
-Release  : 6
+Release  : 7
 URL      : https://github.com/libproxy/libproxy/archive/0.5.1/libproxy-0.5.1.tar.gz
 Source0  : https://github.com/libproxy/libproxy/archive/0.5.1/libproxy-0.5.1.tar.gz
 Summary  : No detailed summary available
@@ -112,7 +112,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685638405
+export SOURCE_DATE_EPOCH=1685643382
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
