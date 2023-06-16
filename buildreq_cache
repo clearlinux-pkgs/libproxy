@@ -1,7 +1,9 @@
-0.5.1
+0.5.2
 curl-dev
+glib-dev
 gsettings-desktop-schemas
 pkgconfig(duktape)
+pkgconfig(glib-2.0)
 pkgconfig(gobject-introspection-1.0)
 pkgconfig(gsettings-desktop-schemas)
 pkgconfig(libcurl)
