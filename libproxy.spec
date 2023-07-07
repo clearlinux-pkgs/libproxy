@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : libproxy
-Version  : 0.5.2
-Release  : 8
-URL      : https://github.com/libproxy/libproxy/archive/0.5.2/libproxy-0.5.2.tar.gz
-Source0  : https://github.com/libproxy/libproxy/archive/0.5.2/libproxy-0.5.2.tar.gz
+Version  : 0.5.3
+Release  : 9
+URL      : https://github.com/libproxy/libproxy/archive/0.5.3/libproxy-0.5.3.tar.gz
+Source0  : https://github.com/libproxy/libproxy/archive/0.5.3/libproxy-0.5.3.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -103,10 +103,10 @@ man components for the libproxy package.
 
 
 %prep
-%setup -q -n libproxy-0.5.2
-cd %{_builddir}/libproxy-0.5.2
+%setup -q -n libproxy-0.5.3
+cd %{_builddir}/libproxy-0.5.3
 pushd ..
-cp -a libproxy-0.5.2 buildavx2
+cp -a libproxy-0.5.3 buildavx2
 popd
 
 %build
@@ -114,7 +114,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1686934234
+export SOURCE_DATE_EPOCH=1688759543
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
