@@ -1,4 +1,5 @@
 libproxy.so.1:LIBPROXY_0.4.16
+libproxy.so.1:LIBPROXY_0.5.5
 libproxy.so.1:px_proxy_factory_copy
 libproxy.so.1:px_proxy_factory_free
 libproxy.so.1:px_proxy_factory_free_proxies
