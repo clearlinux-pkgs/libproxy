@@ -8,7 +8,7 @@
 %define keepstatic 1
 Name     : libproxy
 Version  : 0.5.9
-Release  : 15
+Release  : 16
 URL      : https://github.com/libproxy/libproxy/archive/0.5.9/libproxy-0.5.9.tar.gz
 Source0  : https://github.com/libproxy/libproxy/archive/0.5.9/libproxy-0.5.9.tar.gz
 Summary  : No detailed summary available
@@ -33,6 +33,7 @@ BuildRequires : vala
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
+Patch1: 0001-Enable-building-as-a-static-library.patch
 
 %description
 ![build](https://github.com/libproxy/libproxy/actions/workflows/build.yml/badge.svg)
@@ -106,9 +107,19 @@ Group: Default
 man components for the libproxy package.
 
 
+%package staticdev
+Summary: staticdev components for the libproxy package.
+Group: Default
+Requires: libproxy-dev = %{version}-%{release}
+
+%description staticdev
+staticdev components for the libproxy package.
+
+
 %prep
 %setup -q -n libproxy-0.5.9
 cd %{_builddir}/libproxy-0.5.9
+%patch -P 1 -p1
 pushd ..
 cp -a libproxy-0.5.9 buildavx2
 popd
@@ -118,7 +129,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1740704074
+export SOURCE_DATE_EPOCH=1740759947
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -134,10 +145,10 @@ FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 export GOAMD64=v2
-meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
+meson --libdir=lib64 --prefix=/usr --buildtype=plain --default-library both  builddir
 ninja -v -C builddir
 GOAMD64=v3
-CFLAGS="$CFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -march=x86-64-v3 " meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddiravx2
+CFLAGS="$CFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -march=x86-64-v3 " meson --libdir=lib64 --prefix=/usr --buildtype=plain --default-library both  builddiravx2
 ninja -v -C builddiravx2
 
 %check
@@ -270,3 +281,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 %files man
 %defattr(0644,root,root,0755)
 /usr/share/man/man8/proxy.8
+
+%files staticdev
+%defattr(-,root,root,-)
+/usr/lib64/libproxy.a

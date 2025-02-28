@@ -1,0 +1,25 @@
+From c055df38e0757ee1daa4ae44e61806e2b4b6d614 Mon Sep 17 00:00:00 2001
+From: "Brett T. Warden" <brett.t.warden@intel.com>
+Date: Fri, 28 Feb 2025 08:22:32 -0800
+Subject: [PATCH] Enable building as a static library
+
+---
+ src/libproxy/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libproxy/meson.build b/src/libproxy/meson.build
+index 558719c..ef4fdd9 100644
+--- a/src/libproxy/meson.build
++++ b/src/libproxy/meson.build
+@@ -21,7 +21,7 @@ if cc.has_multi_link_arguments(vscript)
+   vflag += vscript
+ endif
+ 
+-libproxy = shared_library(
++libproxy = library(
+   'proxy',
+   libproxy_sources,
+   include_directories: px_backend_inc,
+-- 
+2.48.1
+
